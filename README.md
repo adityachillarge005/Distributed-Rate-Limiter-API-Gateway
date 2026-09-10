@@ -468,7 +468,7 @@ Example configuration:
 - Spawn rate: `1 user/second`
 - Host: `http://127.0.0.1:8000`
 
-The Locust test sends the JWT access token with each request.
+The Locust test reads the JWT access token from the `LOCUST_ACCESS_TOKEN` environment variable and sends it with each request.
 
 ### Token Bucket Load Test
 
@@ -591,8 +591,8 @@ gateway_project/
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repository-url>
-cd gateway_project
+git clone https://github.com/adityachillarge005/Distributed-Rate-Limiter-API-Gateway.git
+cd Distributed-Rate-Limiter-API-Gateway
 ```
 
 ### 2. Create a virtual environment
@@ -601,10 +601,10 @@ cd gateway_project
 python -m venv myenv
 ```
 
-Activate it on Windows:
+Activate it on Windows (PowerShell):
 
-```bash
-myenv\Scripts\activate
+```powershell
+.\myenv\Scripts\Activate.ps1
 ```
 
 ### 3. Install dependencies
@@ -649,9 +649,12 @@ http://127.0.0.1:8000
 
 ## 🧪 Running Locust
 
-Start Locust from the project root:
+Before starting Locust, set the access token.
 
-```bash
+### Windows PowerShell
+
+```powershell
+$env:LOCUST_ACCESS_TOKEN="your_access_token_here"
 locust
 ```
 
@@ -667,7 +670,7 @@ Configure:
 - Spawn rate: `1`
 - Host: `http://127.0.0.1:8000`
 
-The Locust test sends requests to `/api/gateway/` with the JWT access token configured in `locustfile.py`.
+The Locust test reads the JWT access token from the `LOCUST_ACCESS_TOKEN` environment variable.
 
 ---
 
